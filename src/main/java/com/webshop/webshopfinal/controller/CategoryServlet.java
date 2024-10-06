@@ -3,6 +3,7 @@ package com.webshop.webshopfinal.controller;
 import com.webshop.webshopfinal.handlers.CategoryHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.util.Collection;
 
 @WebServlet("/employee/admin/category")
-public class CategoryServlet {
+public class CategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Collection<CategoryInfo> categories = CategoryHandler.getCategories();
         request.setAttribute("categories", categories);
