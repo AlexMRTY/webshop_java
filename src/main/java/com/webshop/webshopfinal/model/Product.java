@@ -2,10 +2,12 @@ package com.webshop.webshopfinal.model;
 
 
 
+import com.webshop.webshopfinal.controller.ProductInfo;
 import com.webshop.webshopfinal.dao.ProductDAO;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 public class Product {
     private int id;
@@ -38,6 +40,18 @@ public class Product {
 
     static public Collection<ProductDAO> getProductsByIds(List<Integer> ids) {
         return ProductDAO.getProductsByIds(ids);
+    }
+
+    public static void createProduct(Map<String, String> product) {
+        ProductDAO.createProduct(product);
+    }
+
+    public static void updateProduct(Integer id, Map<String, String> product) {
+        ProductDAO.updateProduct(id, product);
+    }
+
+    public static void deleteProduct(int id) {
+        ProductDAO.deleteProduct(id);
     }
 
     public int getId() {

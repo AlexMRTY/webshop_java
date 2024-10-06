@@ -1,5 +1,6 @@
 package com.webshop.webshopfinal.dao;
 
+import com.webshop.webshopfinal.controller.ProductInfo;
 import com.webshop.webshopfinal.model.Product;
 
 import java.sql.Connection;
@@ -7,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 public class ProductDAO extends Product {
@@ -94,6 +96,101 @@ public class ProductDAO extends Product {
         return product;
     }
 
+    public static void createProduct (Map<String, String> product) {
+        List<String> columns = new Vector<String>();
+        List<String> values = new Vector<String>();
+        for (String key : product.keySet()) {
+            columns.add(key);
+            values.add(product.get(key));
+        }
+
+        Connection con = DB.getConnection();
+        PreparedStatement ps = null;
+        try {
+            StringBuilder query = new StringBuilder("INSERT INTO products (");
+            for (int i = 0; i < columns.size(); i++) {
+                query.append(columns.get(i));
+                if (i < columns.size() - 1) {
+                    query.append(",");
+                }
+            }
+            query.append(") VALUES (");
+            for (int i = 0; i < values.size(); i++) {
+                query.append("?");
+                if (i < values.size() - 1) {
+                    query.append(",");
+                }
+            }
+            query.append(");");
+            ps = con.prepareStatement(query.toString());
+            for (int i = 0; i < values.size(); i++) {
+                ps.setString(i + 1, values.get(i));
+            }
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void updateProduct (Integer id, Map<String, String> product) {
+        List<String> columns = new Vector<String>();
+        List<String> values = new Vector<String>();
+        for (String key : product.keySet()) {
+            columns.add(key);
+            values.add(product.get(key));
+        }
+
+        Connection con = DB.getConnection();
+        PreparedStatement ps = null;
+        try {
+            StringBuilder query = new StringBuilder("UPDATE products SET ");
+            for (int i = 0; i < columns.size(); i++) {
+                query.append(columns.get(i) + " = ?");
+                if (i < columns.size() - 1) {
+                    query.append(",");
+                }
+            }
+            query.append(" WHERE product_id = ?;");
+            ps = con.prepareStatement(query.toString());
+            for (int i = 0; i < values.size(); i++) {
+                ps.setString(i + 1, values.get(i));
+            }
+            ps.setInt(values.size() + 1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void deleteProduct (int id) {
+        Connection con = DB.getConnection();
+        PreparedStatement ps = null;
+        try {
+            ps = con.prepareStatement("DELETE FROM products WHERE product_id = ?;");
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) ps.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
     private ProductDAO(int id, String name, String brand, String description, double price, String image, int rating, int stock) {

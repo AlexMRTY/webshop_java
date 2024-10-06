@@ -52,3 +52,9 @@ CREATE TABLE `products` (
 
 
 UPDATE products SET stock = stock - 13 WHERE product_id = 1 AND stock >= 13;
+
+INSERT INTO categories (category_name) VALUES ('T-shirt-type3')
+
+UPDATE products SET products.category_id = 3 WHERE product_id = 3
+
+
