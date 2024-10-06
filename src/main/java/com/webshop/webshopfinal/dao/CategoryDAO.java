@@ -17,7 +17,7 @@ public class CategoryDAO extends Category {
             ps = con.prepareStatement("SELECT * FROM categories");
             var rs = ps.executeQuery();
             while (rs.next()) {
-                categories.add(new CategoryDAO(rs.getInt("id"), rs.getString("category_name")));
+                categories.add(new CategoryDAO(rs.getInt("category_id"), rs.getString("category_name")));
             }
         } catch (Exception e) {
             e.printStackTrace();

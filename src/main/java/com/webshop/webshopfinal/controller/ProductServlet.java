@@ -21,6 +21,15 @@ public class ProductServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("op");
+        if (action.equals("DELETE")) {
+            doDelete(request, response);
+            return;
+        } else if (action.equals("PUT")) {
+            doPut(request, response);
+            return;
+        }
+
         String name = request.getParameter("name");
         String brand = request.getParameter("brand");
         String description = request.getParameter("description");
@@ -53,9 +62,9 @@ public class ProductServlet extends HttpServlet {
             filteredParameters.put("stock", stock);
         }
 
+        // Otherwise create a new product
         ProductHandler.createProduct(filteredParameters);
-        response.sendRedirect("/employee/worker/category");
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
+        response.sendRedirect("/employee/admin");
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -70,35 +79,35 @@ public class ProductServlet extends HttpServlet {
 
         // Filter the parameters and seperate only the ones that are not null
         Map<String, String> filteredParameters = new HashMap<>();
-        if (name != null) {
+        if (name != null && !name.isEmpty()) {
             filteredParameters.put("name", name);
         }
-        if (brand != null) {
+        if (brand != null && !brand.isEmpty()) {
             filteredParameters.put("brand", brand);
         }
-        if (description != null) {
+        if (description != null && !description.isEmpty()) {
             filteredParameters.put("description", description);
         }
-        if (price != null) {
+        if (price != null && !price.isEmpty()) {
             filteredParameters.put("price", price);
         }
-        if (image != null) {
+        if (image != null && !image.isEmpty()) {
             filteredParameters.put("image", image);
         }
-        if (rating != null) {
+        if (rating != null && !rating.isEmpty()) {
             filteredParameters.put("rating", rating);
         }
-        if (stock != null) {
+        if (stock != null && !stock.isEmpty()) {
             filteredParameters.put("stock", stock);
         }
 
         ProductHandler.updateProduct(Integer.parseInt(id), filteredParameters);
-        response.sendRedirect("/employee/worker/product");
+        response.sendRedirect("/employee/admin");
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         ProductHandler.deleteProduct(id);
-        response.sendRedirect("/employee/worker/product");
+        response.sendRedirect("/employee/admin");
     }
 }

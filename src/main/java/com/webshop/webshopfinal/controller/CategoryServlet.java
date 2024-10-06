@@ -18,21 +18,30 @@ public class CategoryServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("op");
+        if (action.equals("DELETE")) {
+            doDelete(request, response);
+            return;
+        } else if (action.equals("PUT")) {
+            doPut(request, response);
+            return;
+        }
+
         String name = request.getParameter("name");
         CategoryHandler.createCategory(name);
-        response.sendRedirect("/employee/worker/category");
+        response.sendRedirect("/employee/admin");
     }
 
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String name = request.getParameter("name");
         CategoryHandler.updateCategory(id, name);
-        response.sendRedirect("/employee/worker/category");
+        response.sendRedirect("/employee/admin");
     }
 
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         CategoryHandler.deleteCategory(id);
-        response.sendRedirect("/employee/worker/category");
+        response.sendRedirect("/employee/admin");
     }
 }
