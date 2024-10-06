@@ -1,33 +1,18 @@
-package com.webshop.webshopfinal.model;
+package com.webshop.webshopfinal.controller;
 
-import com.webshop.webshopfinal.dao.OrderDAO;
 import com.webshop.webshopfinal.enums.OrderStatus;
 
-import java.util.Collection;
-
-public class Order {
+public class OrderInfo {
     private int id;
     private int userId;
     private OrderStatus status;
     private double totalAmount;
 
-    protected Order(int id, int userId, OrderStatus status, double totalPrice) {
+    public OrderInfo(int id, int userId, OrderStatus status, double totalPrice) {
         this.id = id;
         this.userId = userId;
         this.status = status;
         this.totalAmount = totalPrice;
-    }
-
-    static public int createOrder(int userId, OrderStatus status, double totalPrice, Collection<OrderItem> orderItems) {
-        return OrderDAO.createOrder(userId, status, totalPrice, orderItems);
-    }
-
-    static public Collection<OrderDAO> getOrders() {
-        return OrderDAO.getOrders();
-    }
-
-    public static void updateOrderStatus(int orderId, OrderStatus status) {
-        OrderDAO.updateOrderStatus(orderId, status);
     }
 
     public int getId() {
@@ -61,5 +46,4 @@ public class Order {
     public void setTotal_price(double totalPrice) {
         this.totalAmount = totalPrice;
     }
-
 }

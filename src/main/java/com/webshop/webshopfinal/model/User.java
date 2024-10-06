@@ -1,5 +1,7 @@
 package com.webshop.webshopfinal.model;
 
+import com.webshop.webshopfinal.dao.UserDAO;
+
 public class User {
     private int id;
     private String firstName;
@@ -9,13 +11,22 @@ public class User {
     private String email;
     private String role;
 
-    protected User(String first_name, String last_name, String username, String password, String email, String role) {
+    protected User(int id, String first_name, String last_name, String username, String password, String email, String role) {
+        this.id = id;
         this.firstName = first_name;
         this.lastName = last_name;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
+    }
+
+    static public UserDAO login(String username, String password) {
+        return UserDAO.login(username, password);
+    }
+
+    static public UserDAO getUser(String username) {
+        return UserDAO.getUser(username);
     }
 
     public void setId(int id) {
@@ -50,11 +61,11 @@ public class User {
         return id;
     }
 
-    public String getFirst_name() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLast_name() {
+    public String getLastName() {
         return lastName;
     }
 

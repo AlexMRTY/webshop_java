@@ -1,10 +1,7 @@
-package com.webshop.webshopfinal.ui;
+package com.webshop.webshopfinal.controller;
 
 import java.io.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 
-import com.webshop.webshopfinal.db.DB;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
