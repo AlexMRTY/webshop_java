@@ -1,6 +1,8 @@
 <%@ page import="com.webshop.webshopfinal.model.Category" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.webshop.webshopfinal.model.Product" %><%--
+<%@ page import="com.webshop.webshopfinal.model.Product" %>
+<%@ page import="com.webshop.webshopfinal.controller.ProductInfo" %>
+<%@ page import="com.webshop.webshopfinal.controller.CategoryInfo" %><%--
   Created by IntelliJ IDEA.
   User: asifr
   Date: 10/5/2024
@@ -18,8 +20,8 @@
 </head>
 <body class="bg-gray-100">
 <%
-    List<Category> categories = (List<Category>) request.getAttribute("categories");
-    List<Product> products = (List<Product>) request.getAttribute("products");
+    List<CategoryInfo> categories = (List<CategoryInfo>) request.getAttribute("categories");
+    List<ProductInfo> products = (List<ProductInfo>) request.getAttribute("products");
 %>
 <div class="container mx-auto py-8">
     <h1 class="text-3xl font-bold text-center mb-8">Admin Dashboard - Product Management</h1>
@@ -50,7 +52,7 @@
                     <select id="productCategory" name="productCategory" class="border rounded w-full p-2">
                         <%-- Assume categories are passed from the servlet as a list --%>
                         <%
-                            for (Category category : categories) {
+                            for (CategoryInfo category : categories) {
                         %>
                         <option value="<%= category.getId() %>"><%= category.getName() %></option>
                         <%
@@ -75,7 +77,7 @@
                         <%-- Assume products are passed from the servlet as a list --%>
                         <%
 
-                            for (Product product : products) {
+                            for (ProductInfo product : products) {
                         %>
                         <option value="<%= product.getId() %>"><%= product.getName() %></option>
                         <%
@@ -111,7 +113,7 @@
                     <select id="removeCategoryId" name="categoryId" class="border rounded w-full p-2">
                         <%-- Assume categories are passed from the servlet as a list --%>
                         <%
-                            for (Category category : categories) {
+                            for (CategoryInfo category : categories) {
                         %>
                         <option value="<%= category.getId() %>"><%= category.getName() %></option>
                         <%
