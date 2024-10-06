@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/f64dca3a29.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Title</title>
+    <title>Admin Dahsboard</title>
 </head>
 <body class="bg-gray-100">
 <%
@@ -26,11 +26,11 @@
     List<ProductInfo> products = (List<ProductInfo>) request.getAttribute("products");
 %>
 <div class="container mx-auto py-8">
-    <h1 class="text-3xl font-bold text-center mb-8">Admin Dashboard - Product Management</h1>
+    <h1 class="text-3xl font-bold text-center mb-8">Admin Dashboard - Warehouse Management</h1>
 
     <div class="grid grid-cols-12 gap-8">
         <!-- Product Management Section -->
-        <div class="bg-white p-8 shadow-xl rounded-lg col-span-6">
+        <div class="bg-white p-8 shadow-xl rounded-3xl col-span-6">
             <h2 class="text-2xl font-bold mb-6">Manage Products</h2>
 
             <!-- Add Product Form -->
@@ -42,12 +42,20 @@
                     <input type="text" id="productName" name="name" class="border rounded w-full p-2" required>
                 </div>
                 <div class="mb-4">
+                    <label for="productBrand" class="block text-gray-700">Brand Name</label>
+                    <input type="text" id="productBrand" name="brand" class="border rounded w-full p-2" required>
+                </div>
+                <div class="mb-4">
                     <label for="productPrice" class="block text-gray-700">Product Price</label>
                     <input type="number" id="productPrice" name="price" class="border rounded w-full p-2" required>
                 </div>
                 <div class="mb-4">
                     <label for="productStock" class="block text-gray-700">Stock Quantity</label>
                     <input type="number" id="productStock" name="stock" class="border rounded w-full p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="productRating" class="block text-gray-700">Rating</label>
+                    <input type="number" id="productRating" name="rating" class="border rounded w-full p-2" min="0" max="5" required>
                 </div>
                 <div class="mb-4">
                     <label for="productCategory" class="block text-gray-700">Category</label>
@@ -92,12 +100,20 @@
                     <input type="text" id="editProductName" name="name" class="border rounded w-full p-2" >
                 </div>
                 <div class="mb-4">
+                    <label for="editProductBrand" class="block text-gray-700">Brand Name</label>
+                    <input type="text" id="editProductBrand" name="brand" class="border rounded w-full p-2" required>
+                </div>
+                <div class="mb-4">
                     <label for="editProductPrice" class="block text-gray-700">Product Price</label>
                     <input type="number" id="editProductPrice" name="price" class="border rounded w-full p-2" >
                 </div>
                 <div class="mb-4">
                     <label for="editProductStock" class="block text-gray-700">Stock Quantity</label>
                     <input type="number" id="editProductStock" name="stock" class="border rounded w-full p-2" >
+                </div>
+                <div class="mb-4">
+                    <label for="editProductRating" class="block text-gray-700">Rating</label>
+                    <input type="number" id="editProductRating" name="rating" class="border rounded w-full p-2" min="0" max="5" required>
                 </div>
                 <div class="mb-4">
                     <label for="editProductCategory" class="block text-gray-700">Category</label>
@@ -142,7 +158,7 @@
         </div>
 
         <!-- Category Management Section -->
-        <div class="bg-white p-8 shadow-xl rounded-lg col-span-6">
+        <div class="bg-white p-8 shadow-xl rounded-3xl col-span-6">
             <h2 class="text-2xl font-bold mb-6">Manage Categories</h2>
 
             <!-- Add Category Form -->
@@ -203,7 +219,7 @@
     </div>
 
     <!-- Product Section -->
-    <section class="bg-white pt-32 mb-32">
+    <section class="pt-32 mb-32">
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 pb-40 container mx-auto">
             <%

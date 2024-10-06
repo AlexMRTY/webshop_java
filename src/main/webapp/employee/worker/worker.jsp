@@ -75,6 +75,7 @@
                                 break;
                             }
                         }
+                        if (product == null) continue;
 
                 %>
                 <div class="flex items-center mb-4">

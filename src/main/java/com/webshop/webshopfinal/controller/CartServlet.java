@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @WebServlet("/home/me/cart")
 public class CartServlet extends HttpServlet {
@@ -85,7 +86,7 @@ public class CartServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         // Product Array to return
-        ArrayList<ProductInfo> products = new ArrayList<ProductInfo>();
+        List<ProductInfo> products = new ArrayList<ProductInfo>();
 
         // Find Cart Cookie
         Cookie[] cookies = request.getCookies();
@@ -109,10 +110,11 @@ public class CartServlet extends HttpServlet {
                 request.getRequestDispatcher("/cart.jsp").forward(request, response);
             } else {
                 String[] productIds = cart.split("\\|");
+                List<Integer> productIdsList = new ArrayList<>();
                 for (String productId : productIds) {
-                    ProductInfo product = ProductHandler.getProduct(Integer.parseInt(productId));
-                    products.add(product);
+                    productIdsList.add(Integer.parseInt(productId));
                 }
+                products = ProductHandler.getProductsByIds(productIdsList);
                 request.getSession().setAttribute("cartItems", products);
                 request.getRequestDispatcher("/cart.jsp").forward(request, response);
             }

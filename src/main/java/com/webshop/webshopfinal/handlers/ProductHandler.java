@@ -15,9 +15,9 @@ public class ProductHandler {
         return convertToProductInfos(products);
     }
 
-    public static Collection<ProductInfo> getProductsByIds(List<Integer> ids) {
+    public static List<ProductInfo> getProductsByIds(List<Integer> ids) {
         Collection<ProductDAO> products = Product.getProductsByIds(ids);
-        return convertToProductInfos(products);
+        return (List<ProductInfo>) convertToProductInfos(products);
     }
 
     public static ProductInfo getProduct(int id) {
