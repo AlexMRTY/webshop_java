@@ -18,14 +18,30 @@ public class Order {
         this.totalAmount = totalPrice;
     }
 
+    /**
+     * Constructor for Order
+     * @param userId
+     * @param status
+     * @param totalPrice
+     */
     static public int createOrder(int userId, OrderStatus status, double totalPrice, Collection<OrderItem> orderItems) {
         return OrderDAO.createOrder(userId, status, totalPrice, orderItems);
     }
 
+    /**
+     * Get all orders
+     * @return Collection<OrderDAO>
+     */
     static public Collection<OrderDAO> getOrders() {
         return OrderDAO.getOrders();
     }
 
+    /**
+     * Update order status
+     * @param orderId
+     * @param status
+     * @return void
+     */
     public static void updateOrderStatus(int orderId, OrderStatus status) {
         OrderDAO.updateOrderStatus(orderId, status);
     }

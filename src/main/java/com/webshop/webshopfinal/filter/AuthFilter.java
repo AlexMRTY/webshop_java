@@ -11,6 +11,14 @@ import java.io.IOException;
 @WebFilter("/home/me/*")
 public class AuthFilter implements Filter {
 
+    /**
+     * Check if the user is logged in
+     * @param servletRequest
+     * @param servletResponse
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     */
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;

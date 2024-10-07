@@ -21,6 +21,11 @@ public class OrderItem {
         this.price = price;
     }
 
+    /**
+     * Create order items
+     * @param products
+     * @return Collection<OrderItem>
+     */
     static public Collection<OrderItem> createOrderItems(Collection<ProductInfo> products) {
         Collection<OrderItem> orderItems = new ArrayList<OrderItem>();
         HashMap<Integer, Integer> productQuantity = new HashMap<Integer, Integer>();
@@ -48,6 +53,11 @@ public class OrderItem {
         return orderItems;
     }
 
+    /**
+     * Get order items by order id
+     * @param orderIds
+     * @return Collection<OrderItemDAO>
+     */
     static public Collection<OrderItemDAO> getOrderItemsByOrderId(List<Integer> orderIds) {
         return OrderItemDAO.getOrderItemsByOrderId(orderIds);
     }

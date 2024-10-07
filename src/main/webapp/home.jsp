@@ -178,6 +178,25 @@
                 } // End for loop
             %>
         </div>
+
+<%--        Footer--%>
+        <footer class="bg-black text-white py-20">
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 gap-6">
+                    <form action="/employee/admin">
+                        <button class="text-white border-solid border-4 border-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-base px-5 py-2.5" >
+                            Admin Dashboard
+                        </button>
+                    </form>
+                    <form action="/employee/worker">
+                        <button class="text-white border-solid border-4 border-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-base px-5 py-2.5">
+                            Worker Dashboard
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </footer>
     </section>
 
 </body>

@@ -85,8 +85,6 @@ INSERT INTO webshop.products (product_id, name, brand, description, price, image
 INSERT INTO webshop.products (product_id, name, brand, description, price, image, rating, stock, created_at, updated_at, category_id) VALUES (9, 'Fancy Pants', 'Nike', null, 200.00, 'https://res.cloudinary.com/dwcbhc3rp/image/upload/v1728043326/n6_iatlxi.jpg', 1, 5, '2024-10-06 21:52:18', '2024-10-06 22:04:08', null);
 INSERT INTO webshop.products (product_id, name, brand, description, price, image, rating, stock, created_at, updated_at, category_id) VALUES (10, 'Boring Woman Shirt', 'abibas', null, 20.00, 'https://res.cloudinary.com/dwcbhc3rp/image/upload/v1728043325/n2_jjvfrf.jpg', 5, 13, '2024-10-06 21:53:20', '2024-10-06 22:04:48', null);
 INSERT INTO webshop.products (product_id, name, brand, description, price, image, rating, stock, created_at, updated_at, category_id) VALUES (11, 'Boring Man Shirt', 'abidas', null, 20.00, 'https://res.cloudinary.com/dwcbhc3rp/image/upload/v1728043326/n5_dzbuwg.jpg', 2, 13, '2024-10-06 21:54:30', '2024-10-06 22:05:25', null);
-INSERT INTO webshop.products (product_id, name, brand, description, price, image, rating, stock, created_at, updated_at, category_id) VALUES (12, '?', 'Sexy', null, 1000.00, 'https://res.cloudinary.com/dwcbhc3rp/image/upload/v1727984537/samples/outdoor-woman.jpg', 5, 1, '2024-10-06 21:55:40', '2024-10-06 22:06:22', null);
-
 
 # Users
 INSERT INTO webshop.users (id, first_name, last_name, username, email, password, role, created_at, updated_at) VALUES (1, 'John', 'Doe', 'johndoe', 'john@gmail.com', 'password', null, '2024-10-03 21:38:24', '2024-10-03 21:38:24');

@@ -21,10 +21,21 @@ public class User {
         this.role = role;
     }
 
+    /**
+     * Login User
+     * @param username
+     * @param password
+     * @return
+     */
     static public UserDAO login(String username, String password) {
         return UserDAO.login(username, password);
     }
 
+    /**
+     * Get User
+     * @param username
+     * @return
+     */
     static public UserDAO getUser(String username) {
         return UserDAO.getUser(username);
     }

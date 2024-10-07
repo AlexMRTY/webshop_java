@@ -10,6 +10,15 @@ import java.io.IOException;
 
 @WebFilter("/employee/worker/*")
 public class WorkerFilter implements Filter {
+
+    /**
+     * Check if the user has worker privileges
+     * @param request
+     * @param response
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
         HttpServletRequest httpRequest = (HttpServletRequest) request;

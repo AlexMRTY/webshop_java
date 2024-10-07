@@ -7,6 +7,10 @@ public class DB {
     private static DB instance = null;
     private Connection con = null;
 
+    /**
+     * Get DB instance
+     * @return DB
+     */
     public static DB getInstance() {
         if (instance == null) {
             instance = new DB();
@@ -14,6 +18,9 @@ public class DB {
         return instance;
     }
 
+    /**
+     * Constructor
+     */
     private DB() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -21,10 +28,18 @@ public class DB {
         } catch (Exception e) {e.printStackTrace();}
     }
 
+    /**
+     * Get connection
+     * @return Connection
+     */
     public static Connection getConnection() {
         return getInstance().con;
     }
 
+    /**
+     * Test connection for development
+     * @return Boolean
+     */
     public static Boolean testConnection() {
         try {
             getConnection();

@@ -12,6 +12,14 @@ import java.io.IOException;
 @WebFilter("/employee/admin/*")
 public class AdminFilter implements Filter {
 
+    /**
+     * Check if the user has admin privileges
+     * @param request
+     * @param response
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
     {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
@@ -19,7 +27,7 @@ public class AdminFilter implements Filter {
         HttpSession session = httpRequest.getSession();
 
 
-        // Check if the user is logged in and has admin privileges
+        // Check if the user has admin privileges
         if (
             (session != null && session.getAttribute("userRole") != null) &&
             session.getAttribute("userRole").equals("ADMIN")

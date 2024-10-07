@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class CategoryHandler {
+
+    /**
+     * Get all categories
+     * @return Collection<CategoryInfo>
+     */
     public static Collection<CategoryInfo> getCategories() {
         Collection<CategoryDAO> categories = Category.getCategories();
         Collection<CategoryInfo> categoryInfos = new ArrayList<>();
@@ -17,6 +22,11 @@ public class CategoryHandler {
         return categoryInfos;
     }
 
+    /**
+     * Get category by id
+     * @param id
+     * @return CategoryInfo
+     */
     public static CategoryInfo getCategory(int id) {
         CategoryDAO category = Category.getCategory(id);
         if (category == null) {
@@ -25,14 +35,27 @@ public class CategoryHandler {
         return new CategoryInfo(category.getId(), category.getName());
     }
 
+    /**
+     * Create category
+     * @param name
+     */
     public static void createCategory(String name) {
         Category.createCategory(name);
     }
 
+    /**
+     * Update category
+     * @param id
+     * @param name
+     */
     public static void updateCategory(int id, String name) {
         Category.updateCategory(id, name);
     }
 
+    /**
+     * Delete category
+     * @param id
+     */
     public static void deleteCategory(int id) {
         Category.deleteCategory(id);
     }

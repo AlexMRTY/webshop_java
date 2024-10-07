@@ -12,6 +12,13 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class OrderHandler {
+
+    /**
+     * Create order
+     * @param userId
+     * @param products
+     * @return int
+     */
     public static int createOrder(int userId, Collection<ProductInfo> products) {
         Collection<OrderItem> orderItems = OrderItem.createOrderItems(products);
         double totalPrice = 0;
@@ -21,6 +28,10 @@ public class OrderHandler {
         return Order.createOrder(userId, OrderStatus.PLACED, totalPrice, orderItems);
     }
 
+    /**
+     * Get all orders
+     * @return Collection<OrderInfo>
+     */
     public static Collection<OrderInfo> getOrders() {
         Collection<OrderDAO> orderDao = OrderDAO.getOrders();
         Collection<OrderInfo> orders = new ArrayList<>();

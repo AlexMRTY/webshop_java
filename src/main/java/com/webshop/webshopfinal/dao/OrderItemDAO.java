@@ -9,6 +9,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class OrderItemDAO extends OrderItem {
+
+    /**
+     * Get order items by order id
+     * @param orderIds
+     * @return Collection<OrderItemDAO>
+     */
     public static Collection<OrderItemDAO> getOrderItemsByOrderId(List<Integer> orderIds) {
         Collection<OrderItemDAO> orderItems = new ArrayList<OrderItemDAO>();
         Connection con = DB.getConnection();

@@ -30,26 +30,55 @@ public class Product {
         this.rating = rating;
     }
 
+    /**
+     * Constructor for Product
+     * @param product
+     */
     static public ProductDAO getProduct(int id) {
         return ProductDAO.getProduct(id);
     }
 
+    /**
+     * Get all products
+     * @return Collection<ProductDAO>
+     */
     static public Collection<ProductDAO> getProducts() {
         return ProductDAO.getProducts();
     }
 
+    /**
+     * Get products by category
+     * @param categoryId
+     * @return Collection<ProductDAO>
+     */
     static public Collection<ProductDAO> getProductsByIds(List<Integer> ids) {
         return ProductDAO.getProductsByIds(ids);
     }
 
+    /**
+     * Create product
+     * @param product
+     * @return void
+     */
     public static void createProduct(Map<String, String> product) {
         ProductDAO.createProduct(product);
     }
 
+    /**
+     * Update product
+     * @param id
+     * @param product
+     * @return void
+     */
     public static void updateProduct(Integer id, Map<String, String> product) {
         ProductDAO.updateProduct(id, product);
     }
 
+    /**
+     * Delete product
+     * @param id
+     * @return void
+     */
     public static void deleteProduct(int id) {
         ProductDAO.deleteProduct(id);
     }

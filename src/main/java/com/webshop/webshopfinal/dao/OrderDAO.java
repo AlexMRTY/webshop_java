@@ -10,6 +10,10 @@ import java.util.Collection;
 
 public class OrderDAO extends Order {
 
+    /**
+     * Get all orders
+     * @return Collection<OrderDAO>
+     */
     public static Collection<OrderDAO> getOrders() {
         Collection<OrderDAO> orders = new ArrayList<>();
         Connection con = null;
@@ -40,6 +44,14 @@ public class OrderDAO extends Order {
         return orders;
     }
 
+    /**
+     * Create order
+     * @param userId
+     * @param status
+     * @param totalPrice
+     * @param orderItems
+     * @return int
+     */
     public static int createOrder(int userId, OrderStatus status, double totalPrice, Collection<OrderItem> orderItems) {
         int orderId = -1;
         Connection con = null;
@@ -108,6 +120,11 @@ public class OrderDAO extends Order {
         return orderId;
     }
 
+    /**
+     * Update order status
+     * @param orderId
+     * @param status
+     */
     public static void updateOrderStatus(int orderId, OrderStatus status) {
         Connection con = null;
         PreparedStatement ps = null;

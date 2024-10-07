@@ -12,6 +12,11 @@ import java.util.Map;
 import java.util.Vector;
 
 public class ProductDAO extends Product {
+
+    /**
+     * Get all products
+     * @return Collection<ProductDAO>
+     */
     public static Collection<ProductDAO> getProducts () {
         Vector<ProductDAO> products = new Vector<ProductDAO>();
         try {
@@ -36,6 +41,11 @@ public class ProductDAO extends Product {
         return products;
     }
 
+    /**
+     * Get products by ids
+     * @param ids
+     * @return Collection<ProductDAO>
+     */
     public static Collection<ProductDAO> getProductsByIds (List<Integer> ids) {
         Vector<ProductDAO> products = new Vector<ProductDAO>();
         try {
@@ -71,6 +81,11 @@ public class ProductDAO extends Product {
         return products;
     }
 
+    /**
+     * Get product by id
+     * @param id
+     * @return ProductDAO
+     */
     public static ProductDAO getProduct (int id) {
         ProductDAO product = null;
         try {
@@ -96,6 +111,10 @@ public class ProductDAO extends Product {
         return product;
     }
 
+    /**
+     * Create product
+     * @param product
+     */
     public static void createProduct (Map<String, String> product) {
         List<String> columns = new Vector<String>();
         List<String> values = new Vector<String>();
@@ -138,6 +157,11 @@ public class ProductDAO extends Product {
         }
     }
 
+    /**
+     * Update product
+     * @param id
+     * @param product
+     */
     public static void updateProduct (Integer id, Map<String, String> product) {
         List<String> columns = new Vector<String>();
         List<String> values = new Vector<String>();
@@ -174,6 +198,10 @@ public class ProductDAO extends Product {
         }
     }
 
+    /**
+     * Delete product
+     * @param id
+     */
     public static void deleteProduct (int id) {
         Connection con = DB.getConnection();
         PreparedStatement ps = null;

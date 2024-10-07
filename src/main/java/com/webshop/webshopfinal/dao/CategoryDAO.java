@@ -9,6 +9,10 @@ import java.util.Collection;
 
 public class CategoryDAO extends Category {
 
+    /**
+     * Get all categories
+     * @return Collection<CategoryDAO>
+     */
     public static Collection<CategoryDAO> getCategories() {
         Collection<CategoryDAO> categories = new ArrayList<>();
         Connection con = DB.getConnection();
@@ -31,6 +35,11 @@ public class CategoryDAO extends Category {
         return categories;
     }
 
+    /**
+     * Get category by id
+     * @param id
+     * @return CategoryDAO
+     */
     public static CategoryDAO getCategory(int id) {
         CategoryDAO category = null;
         Connection con = DB.getConnection();
@@ -52,8 +61,12 @@ public class CategoryDAO extends Category {
             }
         }
         return category;
-        }
+    }
 
+        /**
+         * Create category
+         * @param name
+         */
     public static void createCategory(String name) {
         Connection con = DB.getConnection();
         PreparedStatement ps = null;
@@ -73,6 +86,11 @@ public class CategoryDAO extends Category {
 
     }
 
+    /**
+     * Update category
+     * @param id
+     * @param name
+     */
     public static void updateCategory(int id, String name) {
         Connection con = DB.getConnection();
         PreparedStatement ps = null;
@@ -92,6 +110,10 @@ public class CategoryDAO extends Category {
         }
     }
 
+    /**
+     * Delete category
+     * @param id
+     */
     public static void deleteCategory(int id) {
         Connection con = DB.getConnection();
         PreparedStatement ps = null;

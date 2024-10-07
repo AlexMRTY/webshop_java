@@ -7,6 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UserDAO extends User {
+
+    /**
+     * Login user
+     * @param username
+     * @param password
+     * @return UserDAO
+     */
     public static UserDAO login (String username, String password) {
         UserDAO user = null;
         try {
@@ -24,6 +31,11 @@ public class UserDAO extends User {
         return user;
     }
 
+    /**
+     * Get user by username
+     * @param username
+     * @return UserDAO
+     */
     public static UserDAO getUser (String username) {
         UserDAO user = null;
         try {
